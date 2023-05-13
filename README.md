@@ -1,5 +1,5 @@
 # WifiBot_Project
 
-Professors : Mr. Scalvini, Mr. Luguern, Mr. Heyrman, Mr. Fizaine, Mme. Chatoux
+Professors : Mr. SCALVINI, Mr. LUGUERN, Mr. HEYRMAN, Mr. FIZAINE, Mme. CHATOUX
 
 Group : BOURASS Youssra, HADJI Rayan
