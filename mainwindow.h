@@ -3,6 +3,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "myrobot.h"
 
 
 
@@ -20,10 +21,32 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_Up_Arrow_clicked();
+
+    void on_Disconnect_clicked();
+
+    void on_Up_Arrow_pressed();
+
+    void on_Right_Arrow_pressed();
+
+    void on_Down_Arrow_pressed();
+
+    void on_Left_Arrow_pressed();
+
+    void on_SetSpeed_sliderMoved(int position);
+
+    void on_Up_Arrow_released();
+
+    void on_Right_Arrow_released();
+
+    void on_Down_Arrow_released();
+
+    void on_Left_Arrow_released();
+
+    void on_Connect_clicked();
 
 private:
-    Ui::MainWindow *ui;
+    Ui::MainWindow *ui ;
+    MyRobot robot ;
 };
 
 #endif // MAINWINDOW_H
