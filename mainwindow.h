@@ -1,10 +1,8 @@
-
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
 #include "myrobot.h"
-
 
 
 QT_BEGIN_NAMESPACE
@@ -24,25 +22,19 @@ private slots:
 
     void on_Disconnect_clicked();
 
-    void on_Up_Arrow_pressed();
+    void on_Up_Arrow_clicked();
 
-    void on_Right_Arrow_pressed();
+    void on_Right_Arrow_clicked();
 
-    void on_Down_Arrow_pressed();
+    void on_Down_Arrow_clicked();
 
-    void on_Left_Arrow_pressed();
-
-    void on_SetSpeed_sliderMoved(int position);
-
-    void on_Up_Arrow_released();
-
-    void on_Right_Arrow_released();
-
-    void on_Down_Arrow_released();
-
-    void on_Left_Arrow_released();
+    void on_Left_Arrow_clicked();
 
     void on_Connect_clicked();
+
+    void updateSpeed(int speed) ;
+
+    void updateBatteryLevel(int battery_level) ;
 
 private:
     Ui::MainWindow *ui ;
