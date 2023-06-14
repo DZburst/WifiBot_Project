@@ -34,7 +34,7 @@ void MyRobot::doConnect() {
         return;
     }
     TimerEnvoi->start(75);
-
+    this->setConnection(true) ;
 }
 
 void MyRobot::disConnect() {
@@ -90,9 +90,24 @@ short Crc16(unsigned char *Adresse_tab , unsigned char Taille_max)
     return(Crc);
 }
 
+void MyRobot::setConnection(bool connected)
+{
+    is_connected = connected ;
+}
+
 void MyRobot::setSpeed(int speed)
 {
     robot_speed = speed ;
+}
+
+void MyRobot::setBatteryLevel(int battery)
+{
+    battery_level = battery ;
+}
+
+bool MyRobot::getConnection()
+{
+    return is_connected ;
 }
 
 int MyRobot::getSpeed()
@@ -100,14 +115,19 @@ int MyRobot::getSpeed()
     return robot_speed ;
 }
 
-void MyRobot::moveBackward(int speed1, int speed2){
+int MyRobot::getBatteryLevel()
+{
+    return battery_level ;
+}
+
+void MyRobot::moveBackward(int speed1){
 
     DataToSend[0] = 255 ;
     DataToSend[1] = 7 ;
     DataToSend[2] = speed1 ;
     DataToSend[3] = 0 ;
     std::cout << DataToSend[3] << "\n" ;
-    DataToSend[4] = speed2 ;
+    DataToSend[4] = speed1 ;
     DataToSend[5] = 0 ;
     std::cout << DataToSend[5] << "\n" ;
     DataToSend[6] = 0 ;
@@ -117,14 +137,14 @@ void MyRobot::moveBackward(int speed1, int speed2){
     socket->write(DataToSend) ;
 }
 
-void MyRobot::moveForward(int speed1, int speed2){
+void MyRobot::moveForward(int speed1){
 
     DataToSend[0] = 255 ;
     DataToSend[1] = 7 ;
     DataToSend[2] = speed1 ;
     DataToSend[3] = 0 ;
     std::cout << DataToSend[3] << "\n" ;
-    DataToSend[4] = speed2 ;
+    DataToSend[4] = speed1 ;
     DataToSend[5] = 0 ;
     std::cout << DataToSend[5] << "\n" ;
     DataToSend[6] = 80 ;
@@ -166,5 +186,28 @@ void MyRobot::moveRight(int speed1){
     DataToSend[7] = static_cast<unsigned char>(crc & 255) ;
     DataToSend[8] = static_cast<unsigned char>((crc >> 8) & 255) ;
     socket->write(DataToSend) ;
+}
+
+void MyRobot::moveStop(){
+
+    DataToSend[0] = 255 ;
+    DataToSend[1] = 7 ;
+    DataToSend[2] = 0 ;
+    DataToSend[3] = 0 ;
+    std::cout << DataToSend[3] << "\n" ;
+    DataToSend[4] = 0 ;
+    DataToSend[5] = 0 ;
+    std::cout << DataToSend[5] << "\n" ;
+    DataToSend[6] = 16 ;
+    short crc = Crc16((unsigned char*)(DataToSend.data()), DataToSend.size()-2) ;
+    DataToSend[7] = static_cast<unsigned char>(crc & 255) ;
+    DataToSend[8] = static_cast<unsigned char>((crc >> 8) & 255) ;
+    socket->write(DataToSend) ;
+}
+
+int MyRobot::readBatteryLevel()
+{
+    int battery_level = ((DataReceived[2]%102) + 100) / 2 ;
+    return battery_level ;
 }
 

@@ -15,7 +15,11 @@ public:
     void doConnect();
     void disConnect();
     void setSpeed(int speed) ;
+    void setConnection(bool connected) ;
+    void setBatteryLevel(int battery_level) ;
     int getSpeed() ;
+    bool getConnection() ;
+    int getBatteryLevel() ;
     QByteArray DataToSend;
     QByteArray DataReceived;
     QMutex Mutex;
@@ -28,16 +32,20 @@ public slots:
     void bytesWritten(qint64 bytes);
     void readyRead();
     void MyTimerSlot();
-    void moveBackward(int speed1, int speed2) ;
-    void moveForward(int speed1, int speed2) ;
-    void moveRight(int speed1) ;
-    void moveLeft(int speed1) ;
+    void moveBackward(int speed) ;
+    void moveForward(int speed) ;
+    void moveRight(int speed) ;
+    void moveLeft(int speed) ;
+    void moveStop() ;
+    int readBatteryLevel() ;
 
 
 private:
     QTcpSocket *socket;
     QTimer *TimerEnvoi;
-    int robot_speed ;
+    int robot_speed = 0 ;
+    bool is_connected ;
+    int battery_level ;
 };
 
 #endif // MYROBOT_H
