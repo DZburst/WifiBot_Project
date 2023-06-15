@@ -46,16 +46,16 @@ MainWindow::~MainWindow()
     //lorsqu'une touche du clavier est enfoncée
 void MainWindow::keyPressEvent(QKeyEvent* key_robot){
     switch(key_robot->key()){
-    case Qt::Key_A:    // Avancer
+    case Qt::Key_Z :    // Avancer
         robot.moveForward(robot.getSpeed());
         break;
-    case Qt::Key_G :    // Gauche
+    case Qt::Key_Q :    // Gauche
         robot.moveLeft(robot.getSpeed());
         break;
     case Qt::Key_D :    // Droite
         robot.moveRight(robot.getSpeed());
         break;
-    case Qt::Key_R :    // Reculer
+    case Qt::Key_S :    // Reculer
         robot.moveBackward(robot.getSpeed());
         break;
     }
