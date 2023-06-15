@@ -17,9 +17,13 @@ public:
     void setSpeed(int speed) ;
     void setConnection(bool connected) ;
     void setBatteryLevel(int battery_level) ;
+    void setLeftIR(int distance) ;
+    void setRightIR(int distance) ;
     int getSpeed() ;
     bool getConnection() ;
     int getBatteryLevel() ;
+    int getLeftIR() ;
+    int getRightIR() ;
     QByteArray DataToSend;
     QByteArray DataReceived;
     QMutex Mutex;
@@ -38,6 +42,8 @@ public slots:
     void moveLeft(int speed) ;
     void moveStop() ;
     int readBatteryLevel() ;
+    int readLeftIR() ;
+    int readRightIR() ;
 
 
 private:
@@ -46,6 +52,8 @@ private:
     int robot_speed = 0 ;
     bool is_connected ;
     int battery_level ;
+    int leftIR ;
+    int rightIR ;
 };
 
 #endif // MYROBOT_H
