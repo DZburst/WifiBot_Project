@@ -1,6 +1,7 @@
 #include "myrobot.h"
 #include <iostream>
 
+
 MyRobot::MyRobot(QObject *parent) : QObject(parent) {
     DataToSend.resize(9);
     DataToSend[0] = 0xFF;
@@ -172,9 +173,11 @@ void MyRobot::moveLeft(int speed1){
 }
 
 void MyRobot::moveRight(int speed1){
-
+    //Pour activer le CRC
     DataToSend[0] = 255 ;
+    //Taille
     DataToSend[1] = 7 ;
+    //vitesse
     DataToSend[2] = speed1  ;
     DataToSend[3] = 0 ;
     std::cout << DataToSend[3] << "\n" ;
