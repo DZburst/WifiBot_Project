@@ -28,12 +28,26 @@ public:
     ~MainWindow();
 
 private slots:
-    void cam_haut();
-    void cam_bas();
-    void cam_gauche();
-    void cam_droite();
+
+    void on_Connect_clicked();
 
     void on_Disconnect_clicked();
+
+    void cam_haut();
+
+    void cam_bas();
+
+    void cam_gauche();
+
+    void cam_droite();
+
+    void on_Camera_Up_clicked();
+
+    void on_Camera_Right_clicked();
+
+    void on_Camera_Down_clicked();
+
+    void on_Camera_Left_clicked();
 
     void on_Up_Arrow_clicked();
 
@@ -45,22 +59,17 @@ private slots:
 
     void on_STOP_clicked();
 
-    void on_Connect_clicked();
+    void keyPressEvent(QKeyEvent* key_robot);
+
+    void keyReleaseEvent(QKeyEvent* key_robot);
 
     void updateSpeed(int speed) ;
 
     void updateBatteryLevel(int battery_level) ;
 
-    void keyPressEvent(QKeyEvent* key_robot);
-    void keyReleaseEvent(QKeyEvent* key_robot);
+    void updateLeftIR(int distance) ;
 
-    void on_Camera_Up_clicked();
-
-    void on_Camera_Right_clicked();
-
-    void on_Camera_Down_clicked();
-
-    void on_Camera_Left_clicked();
+    void updateRightIR(int distance) ;
 
 private:
     Ui::MainWindow *ui ;

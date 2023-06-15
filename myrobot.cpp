@@ -106,6 +106,16 @@ void MyRobot::setBatteryLevel(int battery)
     battery_level = battery ;
 }
 
+void MyRobot::setLeftIR(int distance)
+{
+    leftIR = distance ;
+}
+
+void MyRobot::setRightIR(int distance)
+{
+    rightIR = distance ;
+}
+
 bool MyRobot::getConnection()
 {
     return is_connected ;
@@ -119,6 +129,16 @@ int MyRobot::getSpeed()
 int MyRobot::getBatteryLevel()
 {
     return battery_level ;
+}
+
+int MyRobot::getLeftIR()
+{
+    return leftIR ;
+}
+
+int MyRobot::getRightIR()
+{
+    return rightIR ;
 }
 
 void MyRobot::moveBackward(int speed1){
@@ -212,5 +232,17 @@ int MyRobot::readBatteryLevel()
 {
     int battery_level = ((DataReceived[2]%102) + 100) / 2 ;
     return battery_level ;
+}
+
+int MyRobot::readLeftIR()
+{
+    int leftIR = DataReceived[3] ;
+    return leftIR ;
+}
+
+int MyRobot::readRightIR()
+{
+    int RightIR = DataReceived[11] ;
+    return RightIR ;
 }
 
