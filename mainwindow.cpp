@@ -10,11 +10,13 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    // Mise à jour de la vitesse sur l'écran LCD du GUI en fonctino de la position du Slider
     connect(ui->SetSpeed, &QSlider::valueChanged, this, [this](int speed)
             {
                 updateSpeed(speed) ;
             }) ;
 
+    // Création d'un timer permettant ensuite de mettre à jour chaque seconde les valeurs de la batterie ainsi que de la distance IR
     QTimer* timer = new QTimer(this) ;
     connect(timer, &QTimer::timeout, this, [this]()
             {
@@ -70,6 +72,7 @@ void MainWindow::on_Connect_clicked()
     robot.setConnection(1) ;
 }
 
+// relier la déconnection à l'interface
 void MainWindow::on_Disconnect_clicked()
 {
     robot.disConnect();
@@ -181,6 +184,7 @@ void MainWindow::updateBatteryLevel(int battery_level)
 }
 
 
+// changer la distance IR gauche sur le GUI
 void MainWindow::updateLeftIR(int distance)
 {
     robot.setLeftIR(distance) ;
@@ -188,6 +192,7 @@ void MainWindow::updateLeftIR(int distance)
 }
 
 
+// changer la distance IR droite sur le GUI
 void MainWindow::updateRightIR(int distance)
 {
     robot.setRightIR(distance) ;
