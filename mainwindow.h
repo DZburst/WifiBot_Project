@@ -1,3 +1,4 @@
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -27,21 +28,10 @@ public:
     ~MainWindow();
 
 private slots:
-    void Cam_Up();
-
-    void Cam_Right();
-
-    void Cam_Down();
-
-    void Cam_Left();
-
-    void on_Camera_Up_clicked();
-
-    void on_Camera_Right_clicked();
-
-    void on_Camera_Down_clicked();
-
-    void on_Camera_Left_clicked();
+    void cam_haut();
+    void cam_bas();
+    void cam_gauche();
+    void cam_droite();
 
     void on_Disconnect_clicked();
 
@@ -61,9 +51,21 @@ private slots:
 
     void updateBatteryLevel(int battery_level) ;
 
+    void keyPressEvent(QKeyEvent* key_robot);
+    void keyReleaseEvent(QKeyEvent* key_robot);
+
+    void on_Camera_Up_clicked();
+
+    void on_Camera_Right_clicked();
+
+    void on_Camera_Down_clicked();
+
+    void on_Camera_Left_clicked();
+
 private:
     Ui::MainWindow *ui ;
     MyRobot robot ;
+
     QWebEngineView *view;
     QNetworkAccessManager *manager;
     QNetworkRequest request;
