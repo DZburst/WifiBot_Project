@@ -75,8 +75,11 @@ private:
     Ui::MainWindow *ui ;
     MyRobot robot ;
 
+    // Création d'une vue
     QWebEngineView *view;
+    // Création de l'objet manager
     QNetworkAccessManager *manager;
+    // Création d'une instance request
     QNetworkRequest request;
 };
 
